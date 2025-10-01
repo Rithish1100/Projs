@@ -4,11 +4,11 @@ Projects
 This repository contains my Python projects.
 
 ## List of Projects
-- [day-3.py](day-3.py) – Project added
-- [day-4.py](day-4.py) – Project added
-- [day-5.py](day-5.py) – Project added
-- [day-6.py](day-6.py) – Project added
-- [day-7.py](day-7.py) – Project added
-- [hangman.py](hangman.py) – Classic Hangman game
+- [day-3.py](day-3.py) – Treasure Hunt Game
+- [day-4.py](day-4.py) – Rock, Paper, Scissors Game
+- [day-5.py](day-5.py) – Password Generator
+- [day-6.py](day-6.py) – Hangman Game
+- [day-7.py](day-7.py) – Caesar Cipher -Encode and Decode
+
 
 ---
