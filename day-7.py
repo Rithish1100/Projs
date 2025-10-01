@@ -11,12 +11,11 @@ alphabet=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r
 def cipher(txt,shif,encoded_or_decoded):
     output=""
     if encoded_or_decoded == 'decode':
-        if i in alphabet:
              shif*=-1
-        for i in txt:
-                if i not in alphabet:
-                     output+=i
-                else:
+    for i in txt:
+            if i not in alphabet:
+                  output+=i
+            else:
                      shifted_position=alphabet.index(i)+shif
                      shifted_position%= len(alphabet)
                      output+=alphabet[shifted_position]
@@ -28,7 +27,7 @@ while should_continue:
     shift =int(input("Type the shift number:\n"))
     cipher(txt=text,shif=shift,encoded_or_decoded=direction)
 
-    restart=input("type y to continrue n to n\n").lower()
+    restart=input("type yes to continrue no to stop\n").lower()
     if restart== "no":
         should_continue=False
         print("bye")
