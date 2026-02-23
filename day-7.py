@@ -1,33 +1,37 @@
-print('''              
-  ___ __ _  ___  ___  __ _ _ __    ___(_)_ __ | |__   ___ _ __ 
- / __/ _` |/ _ \/ __|/ _` | '__|  / __| | '_ \| '_ \ / _ \ '__|
-| (_| (_| |  __/\__ \ (_| | |    | (__| | |_) | | | |  __/ |   
- \___\__,_|\___||___/\__,_|_|     \___|_| .__/|_| |_|\___|_|   
-                                        |_|                    ''')
+import random
 
+words = ["apple", "banana", "grapes", "orange", "mango"]
+word = random.choice(words)
 
+guessed = ["_"] * len(word)
+attempts = 6
+used_letters = []
 
-alphabet=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-def cipher(txt,shif,encoded_or_decoded):
-    output=""
-    if encoded_or_decoded == 'decode':
-             shif*=-1
-    for i in txt:
-            if i not in alphabet:
-                  output+=i
-            else:
-                     shifted_position=alphabet.index(i)+shif
-                     shifted_position%= len(alphabet)
-                     output+=alphabet[shifted_position]
-    print(f"here is the {encoded_or_decoded} text:{output}")
-should_continue=True
-while should_continue:
-    direction= input("Type 'encode' to encript, type 'decode' to decript:\n").lower()
-    text= input("Type your message:\n").lower()
-    shift =int(input("Type the shift number:\n"))
-    cipher(txt=text,shif=shift,encoded_or_decoded=direction)
+print("Welcome to Hangman Game!")
 
-    restart=input("type yes to continrue no to stop\n").lower()
-    if restart== "no":
-        should_continue=False
-        print("bye")
+while attempts > 0 and "_" in guessed:
+    print("\nWord:", " ".join(guessed))
+    print("Attempts left:", attempts)
+    print("Used letters:", used_letters)
+
+    guess = input("Enter a letter: ").lower()
+
+    if guess in used_letters:
+        print("You already guessed that letter!")
+        continue
+
+    used_letters.append(guess)
+
+    if guess in word:
+        for i in range(len(word)):
+            if word[i] == guess:
+                guessed[i] = guess
+        print("Correct!")
+    else:
+        attempts -= 1
+        print("Wrong!")
+
+if "_" not in guessed:
+    print("\nYou won! The word was:", word)
+else:
+    print("\nYou lost! The word was:", word)
