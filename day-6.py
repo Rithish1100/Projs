@@ -1,46 +1,33 @@
-import random
-from hangman import word_list
-stages= [''' 6
-         
-         ''',''' 5 ''','''4''','''3''','''2''','''1''','''0''']
-life=6
-chosen=random.choice(word_list)
-print(chosen)
-place=""
-word_length=len(chosen)
-for position in range(word_length):
-    place+="_"
-print(place )
+print('''              
+  ___ __ _  ___  ___  __ _ _ __    ___(_)_ __ | |__   ___ _ __ 
+ / __/ _` |/ _ \/ __|/ _` | '__|  / __| | '_ \| '_ \ / _ \ '__|
+| (_| (_| |  __/\__ \ (_| | |    | (__| | |_) | | | |  __/ |   
+ \___\__,_|\___||___/\__,_|_|     \___|_| .__/|_| |_|\___|_|   
+                                        |_|                    ''')
 
-game_over = False
-correct=[]
-while not game_over:
-    guess=input("Guess a letter :").lower()
-    if guess in correct:
-        print("you already guessed{guess}")
-    display=""
 
-    for letter in chosen:
-        if letter == guess:
-            display += letter
-            correct.append(guess)
-        elif letter in correct:
-            display+=letter
-        else:
-            display +="_"
-    print(display)
 
-    if guess not in  chosen:
-        life-=1
-        print("you guessed it wrong")
-        if life ==0:
-            game_over=True
-            print("you lose")
-    
-    if "_"not in display:
-        game_over= True
-        print("you win")
+alphabet=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+def cipher(txt,shif,encoded_or_decoded):
+    output=""
+    if encoded_or_decoded == 'decode':
+             shif*=-1
+    for i in txt:
+            if i not in alphabet:
+                  output+=i
+            else:
+                     shifted_position=alphabet.index(i)+shif
+                     shifted_position%= len(alphabet)
+                     output+=alphabet[shifted_position]
+    print(f"here is the {encoded_or_decoded} text:{output}")
+should_continue=True
+while should_continue:
+    direction= input("Type 'encode' to encript, type 'decode' to decript:\n").lower()
+    text= input("Type your message:\n").lower()
+    shift =int(input("Type the shift number:\n"))
+    cipher(txt=text,shif=shift,encoded_or_decoded=direction)
 
-    print(stages[life])
-
-             
+    restart=input("type yes to continrue no to stop\n").lower()
+    if restart== "no":
+        should_continue=False
+        print("bye")

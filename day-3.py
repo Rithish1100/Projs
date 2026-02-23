@@ -1,42 +1,23 @@
-print("welcome to tresure island your misssion is to find the tresure")
-direction=input("Left or Right:").lower()
-if direction=="left":
-    what=input("Swim or Wait:").lower()
-    if what=="wait":
-        door=input("which door u choose:Red,Yellow,Blue,anything else:").lower()
-        if door=="red":
-            print("game over burned by fire")
-        if door=="blue":
-            print("game over eaten by beasts")
-        if door=="yellow":
-            print('''
-                  
-*******************************************************************************
-          |                   |                  |                     |
- _________|________________.=""_;=.______________|_____________________|_______
-|                   |  ,-"_,=""     `"=.|                  |
-|___________________|__"=._o`"-._        `"=.______________|___________________
-          |                `"=._o`"=._      _`"=._                     |
- _________|_____________________:=._o "=._."_.-="'"=.__________________|_______
-|                   |    __.--" , ; `"=._o." ,-"""-._ ".   |
-|___________________|_._"  ,. .` ` `` ,  `"-._"-._   ". '__|___________________
-          |           |o`"=._` , "` `; .". ,  "-._"-._; ;              |
- _________|___________| ;`-.o`"=._; ." ` '`."\` . "-._ /_______________|_______
-|                   | |o;    `"-.o`"=._``  '` " ,__.--o;   |
-|___________________|_| ;     (#) `-.o `"=.`_.--"_o.-; ;___|___________________
-____/______/______/___|o;._    "      `".o|o_.--"    ;o;____/______/______/____
-/______/______/______/_"=._o--._        ; | ;        ; ;/______/______/______/_
-____/______/______/______/__"=._o--._   ;o|o;     _._;o;____/______/______/____
-/______/______/______/______/____"=._o._; | ;_.--"o.--"_/______/______/______/_
-____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
-/______/______/______/______/______/______/______/______/______/______/[TomekK]
-*******************************************************************************''')
-        else:
-            print("game over")
-    else:
-        print("attacked by trout game over")
+import random
+c=int(input ("what do u choose? type 0 for rock ,type 1 for paper,type 2 for scissors.\n"))
+a=random.randint(0,2)
+if a==0:
+    print("rock")
+elif a==1:
+    print("paper")
+elif a==2:
+    print("scissors")
+if c==0 and a==1:
+    print("paper wins,pc wins")
+elif c==1 and a==2:
+    print("scissors wins,pc wins ")
+elif c==2 and a==0:
+    print("rock wins,pc wins")
+elif c==0 and a==0:
+    print("no one wins,tie")
+elif c==1 and a==1:
+     print("no one wins,tie")
+elif c==2 and a==2:
+     print("no one wins,tie")
 else:
-    print("u fell in hole game over")
-
-
-         
+    print("user wins")
