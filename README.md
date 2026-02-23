@@ -16,7 +16,7 @@ Each project focuses on a different programming concept such as loops, functions
 - [day-8.py](day-8.py) –Bidding Game 
 - [day-9.py](day-9.py) - calculator
 - [day-10.py](day-10.py) - Black Jack Game
-- [day-11.py](day-12.py) - Number Guessing
+- [day-12.py](day-12.py) - Number Guessing
 
 ---
 
