@@ -6,7 +6,7 @@ score=0
 a=0
 while(cans>=0):
 
-    print(art.a)
+    print(art.a[0])
     if(a==0):
         a=random.randint(0,10)
     b=random.randint(0,10)
