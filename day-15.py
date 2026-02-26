@@ -138,7 +138,3 @@ while (a==0):
         
 
 
-
-
-# TODO 6  check transaction sucess
-# TODO 7 Make coffee
