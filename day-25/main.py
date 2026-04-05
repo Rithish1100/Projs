@@ -29,9 +29,10 @@ while len(guessed_states)<50:
     ans_y=data.y[data.state==answer_state]
     ans_x=ans_x.item()
     ans_y=ans_y.item()
-    turtle.penup()
-    turtle.goto(int(ans_x),int(ans_y))
-    ans=turtle.write(answer_state,align="center",font="bold")
-    turtle.setpos(x=0,y=0)
+    t=turtle.Turtle()
+    t.penup()
+    t.goto(int(ans_x),int(ans_y))
+    ans=t.write(answer_state,align="center",font="bold")
+    t.setpos(x=0,y=0)
 
    
