@@ -3,9 +3,9 @@ letters=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r'
 numbers=['0','1','2','3','4','5','6','7','8','9']
 symbols=['!','@','#','$','%','(',')','*','+']
 print("welcome to py password generator")
-nr_letters=int(input("how many letters u like in password\n"))
-nr_symbols=int(input(f"how many symbols would u like\n"))
-nr_numbers=int(input(f"how many numbers would u like \n "))
+nr_letters=random.randint(8,10)
+nr_symbols=random.randint(2,4)
+nr_numbers=random.randint(2,4)
 a=0
 c=[]
 for i in range (0,nr_letters):
