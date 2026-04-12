@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 from random import *
 import pyperclip
+import json
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def generate_password():
     import random
@@ -33,18 +34,41 @@ def to_store():
     password=password_entry.get()
     website_len=len(website_entry.get())
     password_len=len(password_entry.get())
+    new_data={website:{"email":email,"password":password}}
+
     if website_len==0 or password_len==0:
         messagebox.showinfo(title="Warning",message="Please don't leave any fields empty")
 
-    if website_len>0 and password_len>0:
-        is_ok=messagebox.askyesno(title=website,message=f"These are the details entered:\nEmail:{email}\n Password:{password}\n Is it ok to save?")
-
-    if is_ok:
-        with open("data.txt","a")as holder:
-            holder.write(f"{website}|{email}|{password}\n")
+    else:
+        try:
+            with open("data.json","r")as holder:
+                data=json.load(holder)
+        except FileNotFoundError:
+            with open("data.json","w")as holder:
+                json.dump(new_data,holder,indent=4)
+        else:
+            data.update(new_data)
+            with open("data.json","w") as holder:
+                json.dump(data,holder,indent=4)
+        finally:
             website_entry.delete(0,END)
             password_entry.delete(0,END)
-    
+#-----------------------------FIND PASSWORD------------------------------#
+def to_search():
+    website=website_entry.get()
+
+    try:
+        with open("data.json","r")as holder:
+            data=json.load(holder)
+            if website in data:
+                email=data[website]["email"]
+                password=data[website]["password"]
+                messagebox.showinfo(title=f"{website}",message=f"Email:{email}\nPassword:{password}")
+            else:
+                messagebox.showinfo(title="Not found",message="website not found")
+                to_store()
+    except FileNotFoundError:
+        messagebox.showinfo(title="Not found",message="website not found")
 # ---------------------------- UI SETUP ------------------------------- #
 window=Tk()
 window.title("Password Manager")
@@ -58,7 +82,7 @@ canvas.grid(row=0,column=1,columnspan=2)
 website_label=Label(text="Website:",fg="black")
 website_label.grid(row=1,column=0,pady=5,sticky="e",padx=(0,10))
 
-website_entry=Entry(width=40)
+website_entry=Entry()
 website_entry.grid(row=1,column=1,columnspan=2,pady=5,sticky="w")
 website_entry.focus()
 
@@ -80,5 +104,8 @@ password_generator_button.grid(row=3,column=2,pady=5,sticky="w")
 
 add_button=Button(width=35,text="Add",fg="black",command=to_store)
 add_button.grid(row=4,column=1,columnspan=2,pady=5,sticky="w")
+
+search_button=Button(width=13,text="Search",fg="black",command=to_search)
+search_button.grid(row=1,column=2,pady=5,sticky="w")
 
 window.mainloop()
