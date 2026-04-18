@@ -5,8 +5,8 @@ import random
 import smtplib
 import os
 
-my_email=os.environ.get("my_email")
-password=os.environ.get("my_password")
+my_email=os.environ.get("MY_EMAIL")
+password=os.environ.get("MY_PASSWORD")
 today=dt.datetime.now()
 today_tuple=(today.month,today.day)
 data=pd.read_csv('birthdays.csv')
