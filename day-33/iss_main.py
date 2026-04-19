@@ -6,7 +6,7 @@ import time
 MY_LAT =  -14.971599 # Your latitude
 MY_LONG = 73.594566 # Your longitude
 MY_EMAIL="rithishtest@gmail.com"
-MY_PASSWORD="pgtz lxhw ecce uvyx"
+MY_PASSWORD="hgh jhh jhhj"
 latitude=0.00
 longitude=0.00
 
