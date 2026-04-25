@@ -40,11 +40,11 @@ for exercise in sample_response["exercises"]:
         }
     }
     sheet_response = requests.post(
-        SHEET_ENDPOINT, 
+        SHEETY_ENDPOINT, 
         json=sheet_inputs, 
         auth=(
             YOUR_USERNAME, 
             YOUR_PASSWORD,
         )
-)
-print(sheet_response.text)
+    )
+         print(sheet_response.text)
