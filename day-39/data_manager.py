@@ -22,11 +22,11 @@ class DataManager:
     def update_lowest_price(self,row_id,new_price):
         new_data={
             "price":{
-                "lowest_price":new_price
+                "lowestPrice":new_price
             }
         }
         requests.put(
-            url=SHEETY_ENDPOINT,
+            url=f"{SHEETY_ENDPOINT}/{row_id}",
             json=new_data,
-            auth=self.authorizatiion,
+            auth=self._authorization,
         )

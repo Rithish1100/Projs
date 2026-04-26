@@ -22,13 +22,13 @@ class FlightSearch:
         serp_response=requests.get(url=SERP_API_ENDPOINT,params=self.serp_params)
 
         if serp_response.status_code!=200:
-            pint(f"check flights() response code:{response.status_code}")
+            print(f"check flights() response code:{serp_response.status_code}")
             return None
         
         
         data=serp_response.json()
         if "error" in data:
-            print("API error:{data['error']}")
+            print(f"API error:{data['error']}")
             return None
 
         return data

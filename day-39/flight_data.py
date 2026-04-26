@@ -14,8 +14,14 @@ def find_cheapest_flight(data,return_date):
         return FlightData("N/A", "N/A", "N/A", "N/A", "N/A")
 
     all_flights=data.get("best_flights",[])+data.get("other_flights",[])
+    
+    priced_flights=[f for f in all_flights if "price" in f]
 
-    first_flight=all_flights[0]
+    if not priced_flights:
+        print("no priced flight found")
+        return FlightData("N/A","N/A","N/A","N/A","N/A")
+
+    first_flight=priced_flights[0]
     lowest_price=first_flight["price"]
     origin=first_flight["flights"][0]["departure_airport"]["id"]
     destination=first_flight["flights"][-1]["arrival_airport"]["id"]
